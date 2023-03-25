@@ -14,41 +14,37 @@ class Webservice {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("emin1")
-                
                 print(error.localizedDescription)
-                print("emin2")
-                //completion(nil)
-                print("emin3")
+                completion(nil)
                 
             }else if let data = data {
                 
                 let pokemons = try? JSONDecoder().decode(PokemonPage.self, from: data)
-              //  print("emin4")
-                
-              //  print("emin5")
-                
-                
                 completion(pokemons)
-               // print(pokemons)
+                print(pokemons)
                 print("emin666666666666666666666666")
-                
-                //print(pokemons?.results)
-                
-                
-            
-                
-                //                print(array)
-                
-                
-                
-                
-            }
+                }
             
         }.resume()
         
         
         
+    }
+    
+    func downloadDetailPokemon(url: URL, completion: @escaping (SelectedPokemon?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                print("GİRMİYO!")
+                completion(nil)
+                
+            }else if let data = data {
+                let pokemonDetail = try? JSONDecoder().decode(SelectedPokemon.self, from: data)
+                completion(pokemonDetail)
+                print("DETASİL")
+                print(pokemonDetail)
+            }
+        }.resume()
     }
     
     

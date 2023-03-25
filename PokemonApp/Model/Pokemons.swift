@@ -13,27 +13,40 @@
 import Foundation
 
 struct PokemonPage : Codable{
-    let count : Int
-    let next : String
-    let results : [Pokemon]
+    var count : Int
+    var next : String
+    var results : [Pokemon]
 }
 
-struct Pokemon : Codable, Identifiable {
+struct Pokemon : Codable, Identifiable, Equatable {
     let id = UUID()
-    let name : String
-    let url : String
+    var name : String
+    var url : String
 
     
    static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
    
 }
 
-
+/*
+ 
+ 
+ 
+ 
 
 struct DetailPokemon : Codable {
-    let id : Int
-    let height : Int
-    let weight : Int
+    let abilities = [Ability]
 }
 
+struct Ability : Codable {
+    let species : [Species]
+    let is_hidden : Bool
+    let slot : Int
+}
+struct Species : Codable {
+    let name : String
+    let url : String
+}
+ 
 
+ */
