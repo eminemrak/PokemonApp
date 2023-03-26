@@ -20,8 +20,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         pokemonsListTableView.dataSource = self
         pokemonsListTableView.delegate = self
+        pokemonsListTableView.separatorStyle = .none
+        
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151")!
         
         Webservice().downloadPokemons(url: url) { (pokemons) in
@@ -58,7 +61,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 150
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +71,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = pokemonsListTableView.dequeueReusableCell(withIdentifier: "pokemonsCell") as! PokemonsTableViewCell
-       // let ccc = self.pokemonsViewModel.cryptoAtIndex(indexPath.row)
-        cell.pokemonNameLabel.text = self.pokemonsViewModel.cryptoAtIndex(indexPath.row).name
+      //let ccc = self.pokemonsViewModel.cryptoAtIndex(indexPath.row)
+        cell.pokemonNameLabel.text = "dd"
+        //self.pokemonsViewModel.cryptoAtIndex(indexPath.row).name
         //ccc.name
         
         

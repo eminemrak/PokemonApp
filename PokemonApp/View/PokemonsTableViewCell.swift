@@ -14,10 +14,12 @@ class PokemonsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pokemonNameLabel: UILabel!
     
+    @IBOutlet weak var uiView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        uiView.layer.cornerRadius = 30
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
