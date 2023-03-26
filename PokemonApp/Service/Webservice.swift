@@ -10,27 +10,24 @@ import UIKit
 
 class Webservice {
     
+    //Decode and Download Pokemon List, completion with Pokemons Model and PokemonsViewModel
     func downloadPokemons(url: URL, completion: @escaping (PokemonPage?) -> Void ) {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
                 completion(nil)
-                
-            }else if let data = data {
+                }
+            else if let data = data {
                 
                 let pokemons = try? JSONDecoder().decode(PokemonPage.self, from: data)
                 completion(pokemons)
-                print(pokemons)
-                print("emin666666666666666666666666")
+
                 }
-            
         }.resume()
-        
-        
-        
     }
     
+    //Decode and Download Each Pokemon Details, completion with SelectedPokemon Model and SelectedPokemonVM
     func downloadDetailPokemon(url: URL, completion: @escaping (SelectedPokemon?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -50,6 +47,7 @@ class Webservice {
     
 }
 
+//Each Pokemon has url for image, convert url to uiImage with URLSession..
 class ImageDownloader {
     static func downloadImage(_ urlString: String, completion: ((_ image: UIImage?,_ urlString: String?) -> ())?) {
        guard let url = URL(string: urlString) else {

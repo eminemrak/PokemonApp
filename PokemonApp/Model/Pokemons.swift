@@ -23,30 +23,5 @@ struct Pokemon : Codable, Identifiable, Equatable {
     var name : String
     var url : String
 
-    
-   static var samplePokemon = Pokemon(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
-   
 }
 
-/*
- 
- 
- 
- 
-
-struct DetailPokemon : Codable {
-    let abilities = [Ability]
-}
-
-struct Ability : Codable {
-    let species : [Species]
-    let is_hidden : Bool
-    let slot : Int
-}
-struct Species : Codable {
-    let name : String
-    let url : String
-}
- 
-
- */

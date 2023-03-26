@@ -7,12 +7,15 @@
 
 import Foundation
 
+//get pokemons from PokemonViewModel
 struct PokemonsViewModel {
+    
     let pokemonPage : PokemonPage
     
-    func cryptoAtIndex(_ index: Int) -> PokemonViewModel {
-        let crypto = self.pokemonPage.results[index]
-        return PokemonViewModel(pokemon: crypto)
+    //use this function at ViewController -> tableView protocols for get data with index
+    func pokemonAtIndex(_ index: Int) -> PokemonViewModel {
+        let pokemon = self.pokemonPage.results[index]
+        return PokemonViewModel(pokemon: pokemon)
         
     }
     
@@ -21,6 +24,7 @@ struct PokemonsViewModel {
  
 }
 
+//Model for each Pokemon, then we have list for all of pokemons
 struct PokemonViewModel {
     let pokemon : Pokemon
     

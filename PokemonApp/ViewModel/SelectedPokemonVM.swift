@@ -8,12 +8,12 @@
 import Foundation
 
 struct SelectedPokemonVM {
-    
     let selectedPokemon : SelectedPokemon
     
     var weight : Int {
         return self.selectedPokemon.weight
     }
+    
     var height : Int {
         return self.selectedPokemon.height
     }
@@ -21,36 +21,31 @@ struct SelectedPokemonVM {
     var abilities : [Ability] {
         return self.selectedPokemon.abilities
     }
-    
-    //var species : [Species] {
-     //   return self.selectedPokemon.species
-   // }
 }
 
-struct SprVM {
-    let Psprites : PokemonSprites
+struct SpritesViewModel {
+    let sprites : PokemonSprites
     
     var front_default : String {
-        return self.Psprites.front_default
+        return self.sprites.front_default
     }
 }
 
-struct AbilitVM {
-    let PokAbil : Ability
-   
-    
+
+struct AbilityVM {
+    let pokemonAbility : Ability
   
     var ability : Species {
-        return self.PokAbil.ability
+        return self.pokemonAbility.ability
     }
      
     var is_hidden : Bool {
-        return self.PokAbil.is_hidden
+        return self.pokemonAbility.is_hidden
     }
      
      
     var slot : Int {
-        return self.PokAbil.slot
+        return self.pokemonAbility.slot
     }
     
 }
@@ -59,13 +54,13 @@ struct AbilitVM {
 
 
 struct SpeciesVM {
-    let PokSpecies : Species
+    let species : Species
     
     var name : String {
-        return self.PokSpecies.name
+        return self.species.name
     }
     var url : String {
-        return self.PokSpecies.url
+        return self.species.url
     }
 }
  

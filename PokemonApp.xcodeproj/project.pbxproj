@@ -78,7 +78,6 @@
 				9F03E13E29CB770B0022446C /* Assets.xcassets */,
 				9F03E14029CB770B0022446C /* LaunchScreen.storyboard */,
 				9F03E14329CB770B0022446C /* Info.plist */,
-				9F2E958329CCF8FF00D2C0CE /* PokemonDetailsViewController.swift */,
 			);
 			path = PokemonApp;
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 				9F03E13529CB77080022446C /* AppDelegate.swift */,
 				9F03E13729CB77080022446C /* SceneDelegate.swift */,
 				9F03E13929CB77080022446C /* ViewController.swift */,
+				9F2E958329CCF8FF00D2C0CE /* PokemonDetailsViewController.swift */,
 				9F2E957B29CB7F4B00D2C0CE /* PokemonsTableViewCell.swift */,
 			);
 			path = View;

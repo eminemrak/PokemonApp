@@ -10,9 +10,7 @@ import UIKit
 class PokemonDetailsViewController: UIViewController {
     
     var selectedPokemon : String?
-    
     var selectedIndex = 15
-    
     var urlDetails : String?
     
     private var selectedPokemons : SelectedPokemonVM!
@@ -20,22 +18,13 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
 
-    
     @IBOutlet weak var abilityWeight: UILabel!
-    
     @IBOutlet weak var abilityHeight: UILabel!
-    
     @IBOutlet weak var firstAbilityName: UILabel!
-    
     @IBOutlet weak var firstAbilitySlot: UILabel!
-    
     @IBOutlet weak var secondAbilityName: UILabel!
-    
-    
     @IBOutlet weak var secondAbilitySlot: UILabel!
-    
     @IBOutlet weak var firstView: UIView!
-    
     @IBOutlet weak var secondView: UIView!
     
     override func viewDidLoad() {
@@ -44,8 +33,6 @@ class PokemonDetailsViewController: UIViewController {
         firstView.layer.cornerRadius = 30
         secondView.layer.cornerRadius = 30
         
-        
-
        ImageDownloader.downloadImage("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(selectedIndex).png") { image, urlString
             in
             if let imageObject = image {
@@ -60,10 +47,10 @@ class PokemonDetailsViewController: UIViewController {
 
         
     
-        var URELE = URL(string: urlDetails!)
-        Webservice().downloadDetailPokemon(url: URELE!) { (SP) in
-            if SP == SP {
-                self.selectedPokemons = SelectedPokemonVM(selectedPokemon: SP!)
+        var detailURL = URL(string: urlDetails!)
+        Webservice().downloadDetailPokemon(url: detailURL!) { (detailPokemon) in
+            if detailPokemon == detailPokemon {
+                self.selectedPokemons = SelectedPokemonVM(selectedPokemon: detailPokemon!)
                 DispatchQueue.main.async {
                     
                     var height = String(self.selectedPokemons.height)
@@ -77,37 +64,8 @@ class PokemonDetailsViewController: UIViewController {
                     
                     self.secondAbilityName.text = self.selectedPokemons.selectedPokemon.abilities[1].ability.name
                     self.secondAbilitySlot.text = "Slot: \(String(self.selectedPokemons.selectedPokemon.abilities[1].slot))"
-                    
-                    
-                    
-                 
-                     
-                  
-                    print(self.selectedPokemons.weight)
-                    print(self.selectedPokemons.selectedPokemon.sprites)
-                    print(self.selectedPokemons.selectedPokemon.abilities)
-                    //print(self.selectedPokemons.selectedPokemon.abilities[0].is_hidden)
-                    
-                  print(self.selectedPokemons.selectedPokemon.abilities[0].slot)
-                    print(self.selectedPokemons.selectedPokemon.abilities[1].slot)
-                    print(self.selectedPokemons.selectedPokemon.abilities[1].ability.name)
-
-
-
-                   // self.abilityOne.text = String(self.selectedPokemons.weight)
-                    //self.abilityTwo.text = String(self.selectedPokemons.height)
-                  //  self.abilityThree.text = String(self.selectedPokemons.selectedPokemon.abilities[0].slot)
-
-                     
+                    }
+                  }
                 }
-                
-
-            }
-        }
-        
-    }
-    
-    
-    
-    
+              }
 }

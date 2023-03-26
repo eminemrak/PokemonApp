@@ -23,10 +23,13 @@ class ViewController: UIViewController {
         
         pokemonsListTableView.dataSource = self
         pokemonsListTableView.delegate = self
+        
+        //better user interface with none separator
         pokemonsListTableView.separatorStyle = .none
         
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151")!
         
+        //getting pokemons with this function, and reload tableView for listing all pokemons
         Webservice().downloadPokemons(url: url) { (pokemons) in
             if let pokemons = pokemons {
                 
@@ -43,10 +46,10 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ccc = self.pokemonsViewModel.cryptoAtIndex(indexPath.row)
+        let pokemonsName = self.pokemonsViewModel.pokemonAtIndex(indexPath.row).name
         
         urlDetails = "https://pokeapi.co/api/v2/pokemon/\(indexPath.row+1)/"
-        selectedPokemon = ccc.name
+        selectedPokemon = pokemonsName
         selectedIndex = indexPath.row+1
         self.performSegue(withIdentifier: "mainToDetails", sender: nil)
     }
@@ -65,19 +68,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 151
+        return 40
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = pokemonsListTableView.dequeueReusableCell(withIdentifier: "pokemonsCell") as! PokemonsTableViewCell
-      //let ccc = self.pokemonsViewModel.cryptoAtIndex(indexPath.row)
-        cell.pokemonNameLabel.text = "dd"
-        //self.pokemonsViewModel.cryptoAtIndex(indexPath.row).name
-        //ccc.name
-        
-        
-        
+        let pokemonsName = self.pokemonsViewModel.pokemonAtIndex(indexPath.row).name
+        cell.pokemonNameLabel.text = pokemonsName
+
         
         ImageDownloader.downloadImage("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(indexPath.row+1).png") { image, urlString
             in
@@ -85,15 +85,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 DispatchQueue.main.async {
                     cell.pokemonImage.image = imageObject
                 }
-            }
-            
-        }
-        
+               }
+              }
         return cell
-    }
-    
-    
-    
-    
+       }
 }
 
