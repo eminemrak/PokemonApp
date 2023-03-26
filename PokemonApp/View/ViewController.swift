@@ -62,13 +62,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 151
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = pokemonsListTableView.dequeueReusableCell(withIdentifier: "pokemonsCell") as! PokemonsTableViewCell
+       // let ccc = self.pokemonsViewModel.cryptoAtIndex(indexPath.row)
         cell.pokemonNameLabel.text = self.pokemonsViewModel.cryptoAtIndex(indexPath.row).name
+        //ccc.name
         
         
         

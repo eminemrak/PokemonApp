@@ -38,22 +38,41 @@ class PokemonDetailsViewController: UIViewController {
         }
         pokemonName.text = selectedPokemon
        
-        //var url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(selectedIndex)/")!
         
+
         
+    
         var URELE = URL(string: urlDetails!)
         Webservice().downloadDetailPokemon(url: URELE!) { (SP) in
             if SP == SP {
                 self.selectedPokemons = SelectedPokemonVM(selectedPokemon: SP!)
                 DispatchQueue.main.async {
+                 
+                     
+                  
                     print(self.selectedPokemons.weight)
+                    print(self.selectedPokemons.selectedPokemon.sprites)
+                    print(self.selectedPokemons.selectedPokemon.abilities)
+                    //print(self.selectedPokemons.selectedPokemon.abilities[0].is_hidden)
+                    
+                  print(self.selectedPokemons.selectedPokemon.abilities[0].slot)
+                    print(self.selectedPokemons.selectedPokemon.abilities[1].slot)
+                    print(self.selectedPokemons.selectedPokemon.abilities[1].ability.name
+                    )
+
+
+
                     self.abilityOne.text = String(self.selectedPokemons.weight)
+                    self.abilityTwo.text = String(self.selectedPokemons.height)
+                  //  self.abilityThree.text = String(self.selectedPokemons.selectedPokemon.abilities[0].slot)
+
+                     
                 }
                 
 
             }
         }
-         
+        
     }
     
     

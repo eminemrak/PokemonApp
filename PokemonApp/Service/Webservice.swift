@@ -42,7 +42,6 @@ class Webservice {
                 let pokemonDetail = try? JSONDecoder().decode(SelectedPokemon.self, from: data)
                 completion(pokemonDetail)
                 print("DETASİL")
-                print(pokemonDetail)
             }
         }.resume()
     }
